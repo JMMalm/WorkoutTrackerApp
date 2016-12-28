@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace WorkoutTrackerApp
 {
-	public partial class formWorkoutTrackerMain : Form
+	public partial class SettingsConfigurationForm : Form
 	{
-		public formWorkoutTrackerMain()
+		public SettingsConfigurationForm()
 		{
 			InitializeComponent();
-		}
-
-		private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SettingsConfigurationForm settingsConfig = new SettingsConfigurationForm();
-			settingsConfig.Show();
 		}
 	}
 }
