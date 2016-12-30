@@ -2,10 +2,10 @@
 A desktop app for logging and analyzing workout stats using C#, Windows Forms and SQL Server.
 
 ## Built With
-*Visual Studio 2015
-*SQL Server 2014
-*.NET 4.5
-*C# 5.0
+* Visual Studio 2015
+* SQL Server 2014
+* .NET 4.5
+* C# 5.0
 
 Note that there currently isn't much in the source code that would prohibit using a slightly older (or newer) version of .NET, C#, or SQL Server.
 
