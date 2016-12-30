@@ -12,3 +12,5 @@
 /WorkoutTrackerDatabase/WorkoutTrackerDatabase.sqlproj.user
 /WorkoutTrackerDatabase/WorkoutTrackerDatabase.refactorlog
 /WorkoutTrackerDatabase/WorkoutTrackerDatabase.publish.xml
+/WorkoutTrackerApp/connectionStrings.config
+/WorkoutTrackerDatabase/WorkoutTrackerDatabase.dbmdl

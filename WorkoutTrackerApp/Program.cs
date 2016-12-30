@@ -16,7 +16,7 @@ namespace WorkoutTrackerApp
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new formWorkoutTrackerMain());
+			Application.Run(new FormWorkoutTrackerMain());
 		}
 	}
 }

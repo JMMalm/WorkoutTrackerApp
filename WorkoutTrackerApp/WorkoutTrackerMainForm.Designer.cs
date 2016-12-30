@@ -1,6 +1,6 @@
 ﻿namespace WorkoutTrackerApp
 {
-	partial class formWorkoutTrackerMain
+	partial class FormWorkoutTrackerMain
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -32,7 +32,9 @@
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.dataGridViewWorkouts = new System.Windows.Forms.DataGridView();
 			this.menuStripSettings.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkouts)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStripSettings
@@ -57,27 +59,38 @@
 			// configurationToolStripMenuItem
 			// 
 			this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-			this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.configurationToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.configurationToolStripMenuItem.Text = "Configuration";
 			this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			// 
-			// formWorkoutTrackerMain
+			// dataGridViewWorkouts
+			// 
+			this.dataGridViewWorkouts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewWorkouts.Location = new System.Drawing.Point(13, 100);
+			this.dataGridViewWorkouts.Name = "dataGridViewWorkouts";
+			this.dataGridViewWorkouts.Size = new System.Drawing.Size(360, 150);
+			this.dataGridViewWorkouts.TabIndex = 1;
+			// 
+			// FormWorkoutTrackerMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(584, 262);
+			this.Controls.Add(this.dataGridViewWorkouts);
 			this.Controls.Add(this.menuStripSettings);
 			this.MainMenuStrip = this.menuStripSettings;
-			this.Name = "formWorkoutTrackerMain";
+			this.Name = "FormWorkoutTrackerMain";
 			this.Text = "Workout Tracker";
+			this.Shown += new System.EventHandler(this.FormWorkoutTrackerMain_Shown);
 			this.menuStripSettings.ResumeLayout(false);
 			this.menuStripSettings.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorkouts)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -89,6 +102,7 @@
 		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+		private System.Windows.Forms.DataGridView dataGridViewWorkouts;
 	}
 }
 
