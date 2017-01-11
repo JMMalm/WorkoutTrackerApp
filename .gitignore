@@ -14,3 +14,6 @@
 /WorkoutTrackerDatabase/WorkoutTrackerDatabase.publish.xml
 /WorkoutTrackerApp/connectionStrings.config
 /WorkoutTrackerDatabase/WorkoutTrackerDatabase.dbmdl
+/WorkoutTrackerApp.Logic/bin/Debug
+/WorkoutTrackerApp.Logic/obj/Debug
+/WorkoutTrackerApp.Logic/WorkoutTrackerApp.Logic.csproj.user

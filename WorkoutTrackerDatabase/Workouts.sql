@@ -10,7 +10,5 @@
     [Rating] SMALLINT NULL, 
     [BodyWeight] INT NULL, 
     [BodyMassIndex] SMALLINT NULL, 
-    [SysCreated] DATETIME NOT NULL, 
-    [SysModified] DATETIME NOT NULL, 
     [Notes] NVARCHAR(100) NULL
 )
