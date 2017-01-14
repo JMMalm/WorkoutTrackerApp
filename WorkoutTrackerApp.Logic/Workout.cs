@@ -9,9 +9,8 @@ namespace WorkoutTrackerApp.Logic
 {
 	public class Workout
 	{
-		// Required in the database.
+		// Required in the database. (i.e. NOT NULLABLE)
 		public int Id { get; private set; }
-		public DateTime Date { get; private set; }
 		public DateTime StartTime { get; private set; }
 		public DateTime EndTime { get; private set; }
 		public string Location { get; private set; }
@@ -24,12 +23,19 @@ namespace WorkoutTrackerApp.Logic
 		public int BodyMassIndex { get; private set; }
 		public string Notes { get; private set; }
 
-		public Workout() { }
-
+		/// <summary>
+		/// Creates a new Workout object.
+		/// </summary>
+		/// <param name="id">The Id of the workout session.</param>
+		/// <param name="startTime">The start time of the workout session.</param>
+		/// <param name="endTime">The end time of the workout session.</param>
+		/// <param name="location">The location of the workout session.</param>
+		/// <remarks>
+		/// This constructor satisfies the minimum requirements necessary for database operations.
+		/// </remarks>
 		public Workout(int id, DateTime startTime, DateTime endTime, string location)
 		{
 			Id = id;
-			Date = startTime.Date;
 			StartTime = startTime;
 			EndTime = endTime;
 			Location = location;
@@ -72,16 +78,29 @@ namespace WorkoutTrackerApp.Logic
 			return null;
 		}
 
-		public DataRow ToRow()
+		/// <summary>
+		/// Converts a Workout object into a DataRow object.
+		/// </summary>
+		/// <param name="sourceTable">The calling table that needs Workout data to be added to it.</param>
+		/// <returns>A new DataRow of Workout data.</returns>
+		/// <remarks>
+		/// The workflow for calling this method is that we have a Workout object
+		/// and a DataTable that will be used to populate a DataGridView.
+		/// </remarks>
+		public DataRow ToRow(DataTable sourceTable)
 		{
-			// TODO:
+			DataRow workoutRow = sourceTable.NewRow();
+			// This would be much easier using Entity Framework, yes, but as you can see
+			// this is a learning opportunity into reflection.
 			foreach (var type in this.GetType().GetProperties())
 			{
-				throw new NotImplementedException();
-				// Build a datarow object to easily transplant into a DataGridView.
+				// TODO: This sourceTable has a "code smell". Table construction should not
+				// be dependent upon the Workout class.
+				sourceTable.Columns.Add(type.Name.ToString(), type.PropertyType);
+				workoutRow[type.Name.ToString()] = type.GetValue(this);
 			}
 
-			return null;
+			return workoutRow;
 		}
 	}
 }

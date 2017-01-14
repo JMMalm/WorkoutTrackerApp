@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WorkoutTrackerApp.Logic;
 
@@ -103,6 +104,22 @@ namespace WorkoutTrackerAppTests
 
 			// Assert
 			// Expected exception
+		}
+
+		[TestMethod]
+		public void ToRow_ValidValues_Success()
+		{
+			// Arrange
+			Workout workout = new Workout(1, DateTime.Now, DateTime.Now.AddHours(1.0), "Minneapolis");
+
+			// Act
+			var actual = workout.ToRow(new DataTable());
+
+			// Assert
+			Assert.AreEqual(workout.Id, actual["Id"]);
+			Assert.AreEqual(workout.StartTime, actual["StartTime"]);
+			Assert.AreEqual(workout.EndTime, actual["EndTime"]);
+			Assert.AreEqual(workout.Location, actual["Location"]);
 		}
 	}
 }

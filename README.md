@@ -7,7 +7,7 @@ A desktop app for logging and analyzing workout stats using C#, Windows Forms an
 * .NET 4.5
 * C# 5.0
 
-Note that there currently isn't much in the source code that would prohibit using a slightly older (or newer) version of .NET, C#, or SQL Server.
+Note that there currently isn't much in the source code that would prohibit using a different version of .NET, C#, or SQL Server.
 
 ## Local Setup
 1. Download the source code.
@@ -15,13 +15,12 @@ Note that there currently isn't much in the source code that would prohibit usin
 3. Create a `connectionStrings.config` file and place in your `..\WorkoutTrackerApp\bin\Debug` folder. (see note below)
 4. Run via Visual Studio or the .exe.
 
-In the app.config, you'll see that the connectionStrings tag refers to another file, `connectionStrings.config`. That line is there so I don't negligently commit the wrong connection string or constantly have to change it between commits. The config file only needs the following:
+* This project assumes you have a local installation of SQL Server 2008 (or greater), but with some Googling you could probably configure this to work with LocalDB.
+
+In the app.config, you'll see that the connectionStrings tag refers to another file, `connectionStrings.config`. That line is there so wrong connection strings aren't negligently committed or constantly needing to be changed between commits (i.e. you keep this file locally). The config file only needs the following:
 
 ```
 <connectionStrings>
 	<add name="WorkoutTracker" providerName="System.Data.ProviderName" connectionString="Your string here" />
 </connectionStrings>
 ```
-
-## Other Info
-This project is being developed in my free time for my own enjoyment and to enhance my skills. To that end, I'm not seeking contributors but if you have questions or comments feel free to send me an email.

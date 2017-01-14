@@ -33,6 +33,7 @@
 			this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.DataGridViewWorkouts = new System.Windows.Forms.DataGridView();
+			this.ButtonNewWorkout = new System.Windows.Forms.Button();
 			this.menuStripSettings.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DataGridViewWorkouts)).BeginInit();
 			this.SuspendLayout();
@@ -77,11 +78,21 @@
 			this.DataGridViewWorkouts.Size = new System.Drawing.Size(900, 150);
 			this.DataGridViewWorkouts.TabIndex = 1;
 			// 
+			// ButtonNewWorkout
+			// 
+			this.ButtonNewWorkout.Location = new System.Drawing.Point(952, 28);
+			this.ButtonNewWorkout.Name = "ButtonNewWorkout";
+			this.ButtonNewWorkout.Size = new System.Drawing.Size(100, 23);
+			this.ButtonNewWorkout.TabIndex = 2;
+			this.ButtonNewWorkout.Text = "New Workout";
+			this.ButtonNewWorkout.UseVisualStyleBackColor = true;
+			// 
 			// FormWorkoutTrackerMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1064, 262);
+			this.Controls.Add(this.ButtonNewWorkout);
 			this.Controls.Add(this.DataGridViewWorkouts);
 			this.Controls.Add(this.menuStripSettings);
 			this.MainMenuStrip = this.menuStripSettings;
@@ -103,6 +114,7 @@
 		private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 		private System.Windows.Forms.DataGridView DataGridViewWorkouts;
+		private System.Windows.Forms.Button ButtonNewWorkout;
 	}
 }
 

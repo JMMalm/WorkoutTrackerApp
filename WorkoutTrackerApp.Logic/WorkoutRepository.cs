@@ -16,6 +16,11 @@ namespace WorkoutTrackerApp.Logic
 			throw new NotImplementedException();
 		}
 
+		/// <summary>
+		/// Retrieves a single Workout from the database.
+		/// </summary>
+		/// <param name="id">Id of the Workout to retrieve.</param>
+		/// <returns>If Id exists, a Workout object populated with values.</returns>
 		public Workout Get(int id)
 		{
 			SqlConnection connection = new SqlConnection(ConfigurationController.RetrieveSqlConnectionString());
@@ -34,6 +39,7 @@ namespace WorkoutTrackerApp.Logic
 			throw new NotImplementedException();
 		}
 
+		// TODO: Rename method; name does not imply the return object.
 		public Workout RunQuery(SqlCommand sqlQuery)
 		{
 			Workout result = null;

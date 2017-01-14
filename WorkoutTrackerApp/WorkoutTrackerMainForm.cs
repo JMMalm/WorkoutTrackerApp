@@ -44,15 +44,13 @@ namespace WorkoutTrackerApp
 		/// </summary>
 		private void PopulateDataGridViewWithWorkoutData()
 		{
-			WorkoutRepository wr = new WorkoutRepository();
-			Workout results = wr.Get(1);
+			WorkoutRepository workoutRepository = new WorkoutRepository();
+			// TODO: Create ".Get()" overload to populate table with a range of rows.
+			Workout results = workoutRepository.Get(1);
 
-			//DataGridViewWorkouts.AutoGenerateColumns = true;
-			//DataTable myTable = new DataTable();
-			//results.Fill(myTable);
-			//DataGridViewWorkouts.DataSource = myTable;
-			//DataGridViewWorkouts.AutoGenerateColumns = true;
-			//DataGridViewWorkouts.Columns[0].Name = "Id";
+			DataTable workoutDataTable = new DataTable();
+			workoutDataTable.Rows.Add(results.ToRow(workoutDataTable));
+			DataGridViewWorkouts.DataSource = workoutDataTable;
 		}
 
 		private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
