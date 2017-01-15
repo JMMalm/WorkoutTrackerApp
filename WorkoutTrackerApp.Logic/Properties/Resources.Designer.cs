@@ -61,22 +61,20 @@ namespace WorkoutTrackerApp.Logic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DECLARE @id int
-        ///SELECT [Id]
-        ///      ,[Date]
-        ///      ,[WorkoutEmphasis]
-        ///      ,[StartTime]
-        ///      ,[EndTime]
-        ///      ,[Location]
-        ///      ,[WorkoutRoutineId]
-        ///      ,[Rating]
-        ///      ,[BodyWeight]
-        ///      ,[BodyMassIndex]
-        ///      ,[SysCreated]
-        ///      ,[SysModified]
-        ///      ,[Notes]
-        ///  FROM [dbo].[Workouts]
-        ///  WHERE [Id] = @id.
+        ///   Looks up a localized string similar to SELECT [Id], [WorkoutEmphasis], [StartTime], [EndTime], [Location],[WorkoutRoutineId], [Rating], [BodyWeight], [BodyMassIndex], [Notes]
+        ///FROM [dbo].[Workouts]
+        ///WHERE [Id] BETWEEN @minId AND @maxId.
+        /// </summary>
+        internal static string WorkoutsGetMultiple {
+            get {
+                return ResourceManager.GetString("WorkoutsGetMultiple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT [Id], [Date], [WorkoutEmphasis], [StartTime], [EndTime], [Location],[WorkoutRoutineId], [Rating], [BodyWeight], [BodyMassIndex], [SysCreated], [SysModified], [Notes]
+        ///FROM [dbo].[Workouts]
+        ///WHERE [Id] = @id.
         /// </summary>
         internal static string WorkoutsGetSingle {
             get {

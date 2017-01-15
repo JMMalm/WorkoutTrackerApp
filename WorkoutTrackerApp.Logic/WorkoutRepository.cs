@@ -26,12 +26,16 @@ namespace WorkoutTrackerApp.Logic
 			SqlConnection connection = new SqlConnection(ConfigurationController.RetrieveSqlConnectionString());
 			SqlCommand command = new SqlCommand(Properties.Resources.WorkoutsGetSingle, connection);
 			command.Parameters.AddWithValue("@Id", id);
-			return RunQuery(command);
+			return RunQueryGetWorkout(command);
 		}
 
-		public Workout[] GetRange(int start, int end)
+		public List<Workout> Get(int minId, int maxId)
 		{
-			throw new NotImplementedException();
+			SqlConnection connection = new SqlConnection(ConfigurationController.RetrieveSqlConnectionString());
+			SqlCommand command = new SqlCommand(Properties.Resources.WorkoutsGetMultiple, connection);
+			command.Parameters.AddWithValue("@minId", minId);
+			command.Parameters.AddWithValue("@maxId", maxId);
+			return RunQueryGetWorkouts(command);
 		}
 
 		public void Delete(Workout workout)
@@ -39,10 +43,17 @@ namespace WorkoutTrackerApp.Logic
 			throw new NotImplementedException();
 		}
 
-		// TODO: Rename method; name does not imply the return object.
-		public Workout RunQuery(SqlCommand sqlQuery)
+		public Workout RunQueryGetWorkout(SqlCommand sqlQuery)
 		{
-			Workout result = null;
+			List<Workout> queryResults = RunQueryGetWorkouts(sqlQuery);
+			if (queryResults != null && queryResults.Count > 0)
+				return queryResults[0];
+			return null;
+		}
+
+		public List<Workout> RunQueryGetWorkouts(SqlCommand sqlQuery)
+		{
+			List<Workout> result = new List<Workout>();
 			using (sqlQuery.Connection)
 			using (sqlQuery)
 			{
@@ -53,15 +64,13 @@ namespace WorkoutTrackerApp.Logic
 
 					if (queryResult.HasRows)
 					{
-						// TODO: Make a distinction between single/multiple result queries.
-						// This will repeatedly overwrite a single workout in the latter case.
 						while (queryResult.Read())
 						{
-							result = new Workout(
+							result.Add(new Workout(
 								Convert.ToInt32(queryResult["Id"]),
 								Convert.ToDateTime(queryResult["StartTime"]),
 								Convert.ToDateTime(queryResult["EndTime"]),
-								queryResult["Location"].ToString());
+								queryResult["Location"].ToString()));
 						}
 					}
 				}

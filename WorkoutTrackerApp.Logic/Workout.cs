@@ -90,13 +90,12 @@ namespace WorkoutTrackerApp.Logic
 		public DataRow ToRow(DataTable sourceTable)
 		{
 			DataRow workoutRow = sourceTable.NewRow();
-			// This would be much easier using Entity Framework, yes, but as you can see
-			// this is a learning opportunity into reflection.
 			foreach (var type in this.GetType().GetProperties())
 			{
-				// TODO: This sourceTable has a "code smell". Table construction should not
+				// TODO: This has a "code smell". The form's Table construction should not
 				// be dependent upon the Workout class.
-				sourceTable.Columns.Add(type.Name.ToString(), type.PropertyType);
+				if (!sourceTable.Columns.Contains(type.Name.ToString()))
+					sourceTable.Columns.Add(type.Name.ToString(), type.PropertyType);
 				workoutRow[type.Name.ToString()] = type.GetValue(this);
 			}
 

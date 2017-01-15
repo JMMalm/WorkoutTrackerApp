@@ -35,21 +35,33 @@ namespace WorkoutTrackerApp
 		/// <param name="e">Event data associated with this call.</param>
 		private void FormWorkoutTrackerMain_Shown(object sender, System.EventArgs e)
 		{
-			PopulateDataGridViewWithWorkoutData();
+			PopulateDataGridViewWithWorkoutData(1, 4);
 		}
 
 		/// <summary>
 		/// Queries the database for the results necessary to populate the main
 		/// form's data grid view with Workout data.
 		/// </summary>
-		private void PopulateDataGridViewWithWorkoutData()
+		private void PopulateDataGridViewWithWorkoutData(int id)
 		{
 			WorkoutRepository workoutRepository = new WorkoutRepository();
-			// TODO: Create ".Get()" overload to populate table with a range of rows.
-			Workout results = workoutRepository.Get(1);
-
+			Workout results = workoutRepository.Get(id);
 			DataTable workoutDataTable = new DataTable();
 			workoutDataTable.Rows.Add(results.ToRow(workoutDataTable));
+			DataGridViewWorkouts.DataSource = workoutDataTable;
+		}
+
+		private void PopulateDataGridViewWithWorkoutData(int start, int end)
+		{
+			WorkoutRepository workoutRepository = new WorkoutRepository();
+			List<Workout> results = workoutRepository.Get(start, end);
+			DataTable workoutDataTable = new DataTable();
+
+			foreach (Workout workout in results)
+			{
+				workoutDataTable.Rows.Add(workout.ToRow(workoutDataTable));
+			}
+
 			DataGridViewWorkouts.DataSource = workoutDataTable;
 		}
 
