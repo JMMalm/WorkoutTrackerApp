@@ -13,13 +13,12 @@ namespace WorkoutTrackerAppTests
 		{
 			// Arrange
 			Workout workout = new Workout(1, DateTime.Now, DateTime.Now.AddHours(1.0), "Minneapolis");
-			Exception expected = null;
 
 			// Act
-			var actual = workout.ValidateId();
+			workout.ValidateId();
 
 			// Assert
-			Assert.AreEqual(expected, actual);
+			// No exception expected.
 		}
 
 		[TestMethod]
@@ -30,7 +29,7 @@ namespace WorkoutTrackerAppTests
 			Workout workout = new Workout(-1, DateTime.Now, DateTime.Now.AddHours(1.0), "Minneapolis");
 
 			// Act
-			var actual = workout.ValidateId();
+			workout.ValidateId();
 
 			// Assert
 			// Expected exception
@@ -44,7 +43,7 @@ namespace WorkoutTrackerAppTests
 			Workout workout = new Workout(2147483647, DateTime.Now, DateTime.Now.AddHours(1.0), "Minneapolis");
 
 			// Act
-			var actual = workout.ValidateId();
+			workout.ValidateId();
 
 			// Assert
 			// Expected exception
@@ -55,13 +54,12 @@ namespace WorkoutTrackerAppTests
 		{
 			// Arrange
 			Workout workout = new Workout(1, DateTime.Now, DateTime.Now.AddHours(1.0), "Minneapolis");
-			Exception expected = null;
 
 			// Act
-			var actual = workout.ValidateLocation();
+			workout.ValidateLocation();
 
 			// Assert
-			Assert.AreEqual(expected, actual);
+			// No exception expected.
 		}
 
 		[TestMethod]
@@ -72,7 +70,7 @@ namespace WorkoutTrackerAppTests
 			Workout workout = new Workout(1, DateTime.Now, DateTime.Now.AddHours(1.0), null);
 
 			// Act
-			var actual = workout.ValidateLocation();
+			workout.ValidateLocation();
 
 			// Assert
 			// Expected exception
@@ -86,7 +84,7 @@ namespace WorkoutTrackerAppTests
 			Workout workout = new Workout(1, DateTime.Now, DateTime.Now.AddHours(1.0), "");
 
 			// Act
-			var actual = workout.ValidateLocation();
+			workout.ValidateLocation();
 
 			// Assert
 			// Expected exception
@@ -100,7 +98,7 @@ namespace WorkoutTrackerAppTests
 			Workout workout = new Workout(1, DateTime.Now, DateTime.Now.AddHours(1.0), "Minneapolis-Washington-Avenue-Between-First-And-Second-Avenues");
 
 			// Act
-			var actual = workout.ValidateLocation();
+			workout.ValidateLocation();
 
 			// Assert
 			// Expected exception

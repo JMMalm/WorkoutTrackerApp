@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Data;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WorkoutTrackerApp.Logic
 {
+	/// <summary>
+	/// Represents a single Workout session.
+	/// </summary>
 	public class Workout
 	{
 		// Required in the database. (i.e. NOT NULLABLE)
@@ -41,6 +40,14 @@ namespace WorkoutTrackerApp.Logic
 			Location = location;
 		}
 
+		/// <summary>
+		/// Runs custom checks on the Workout's properties to ensure
+		/// it is ready for data operations.
+		/// </summary>
+		/// <returns>An exception if an undesireable property condition is found.</returns>
+		/// <remarks>
+		/// This method will typically be called before inserting records into the database.
+		/// </remarks>
 		public Exception Validate()
 		{
 			Exception validationResult = null;
@@ -57,15 +64,26 @@ namespace WorkoutTrackerApp.Logic
 			return validationResult;
 		}
 
-		public Exception ValidateId()
+		/// <summary>
+		/// Checks Workout ID for invalid values.
+		/// </summary>
+		public void ValidateId()
 		{
-			if (Id < 0) { throw new ArgumentOutOfRangeException("Id", "The ID cannot be less than zero."); }
-			// Any larger values won't fit in the database column.
-			if (Id >= 2147483647) { throw new ArgumentOutOfRangeException("Id", "The ID cannot be greater than 2,147,483,647"); }
-			return null;
+			if (Id < 0)
+			{
+				throw new ArgumentOutOfRangeException("Id", "The ID cannot be less than zero.");
+			}
+			if (Id >= 2147483647)
+			{
+				// Any larger values won't fit in the table's ID column.
+				throw new ArgumentOutOfRangeException("Id", "The ID cannot be greater than 2,147,483,647");
+			}
 		}
 
-		public Exception ValidateLocation()
+		/// <summary>
+		/// Checks the Workout Location for invalid values.
+		/// </summary>
+		public void ValidateLocation()
 		{
 			if (string.IsNullOrEmpty(Location) || string.IsNullOrWhiteSpace(Location))
 			{
@@ -75,11 +93,10 @@ namespace WorkoutTrackerApp.Logic
 			{
 				throw new ArgumentOutOfRangeException("The Location cannot exceed 50 characters.");
 			}
-			return null;
 		}
 
 		/// <summary>
-		/// Converts a Workout object into a DataRow object.
+		/// Generates a DataRow object using this Workout's properties.
 		/// </summary>
 		/// <param name="sourceTable">The calling table that needs Workout data to be added to it.</param>
 		/// <returns>A new DataRow of Workout data.</returns>
@@ -92,8 +109,6 @@ namespace WorkoutTrackerApp.Logic
 			DataRow workoutRow = sourceTable.NewRow();
 			foreach (var type in this.GetType().GetProperties())
 			{
-				// TODO: This has a "code smell". The form's Table construction should not
-				// be dependent upon the Workout class.
 				if (!sourceTable.Columns.Contains(type.Name.ToString()))
 					sourceTable.Columns.Add(type.Name.ToString(), type.PropertyType);
 				workoutRow[type.Name.ToString()] = type.GetValue(this);

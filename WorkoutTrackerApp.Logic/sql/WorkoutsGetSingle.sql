@@ -1,3 +1,3 @@
-SELECT [Id], [Date], [WorkoutEmphasis], [StartTime], [EndTime], [Location],[WorkoutRoutineId], [Rating], [BodyWeight], [BodyMassIndex], [SysCreated], [SysModified], [Notes]
+SELECT [Id], [WorkoutEmphasis], [StartTime], [EndTime], [Location],[WorkoutRoutineId], [Rating], [BodyWeight], [BodyMassIndex], [Notes]
 FROM [dbo].[Workouts]
 WHERE [Id] = @id
