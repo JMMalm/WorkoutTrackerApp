@@ -20,19 +20,24 @@ namespace WorkoutTrackerApp.Logic
 		/// <returns>If Id exists, a Workout object populated with values.</returns>
 		public Workout Get(int id)
 		{
-			SqlConnection connection = new SqlConnection(ConfigurationController.RetrieveSqlConnectionString());
-			SqlCommand command = new SqlCommand(Properties.Resources.WorkoutsGetSingle, connection);
+			SqlCommand command = PrepareSqlQuery(Properties.Resources.WorkoutsGetSingle);
 			command.Parameters.AddWithValue("@Id", id);
 			return RunQueryGetWorkout(command);
 		}
 
 		public List<Workout> Get(int minId, int maxId)
 		{
-			SqlConnection connection = new SqlConnection(ConfigurationController.RetrieveSqlConnectionString());
-			SqlCommand command = new SqlCommand(Properties.Resources.WorkoutsGetMultiple, connection);
+			SqlCommand command = PrepareSqlQuery(Properties.Resources.WorkoutsGetMultiple);
 			command.Parameters.AddWithValue("@minId", minId);
 			command.Parameters.AddWithValue("@maxId", maxId);
 			return RunQueryGetWorkouts(command);
+		}
+
+		private static SqlCommand PrepareSqlQuery(string sqlQueryResource)
+		{
+			SqlConnection connection = new SqlConnection(ConfigurationController.RetrieveSqlConnectionString());
+			SqlCommand command = new SqlCommand(sqlQueryResource, connection);
+			return command;
 		}
 
 		public void Delete(Workout workout)
