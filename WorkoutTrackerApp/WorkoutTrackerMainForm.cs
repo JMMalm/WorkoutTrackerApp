@@ -19,6 +19,12 @@ namespace WorkoutTrackerApp
 	/// </summary>
 	public partial class FormWorkoutTrackerMain : Form
 	{
+		private enum DefaultIdValues
+		{
+			defaultMin = 1,
+			defaultMax = 10
+		}
+
 		/// <summary>
 		/// Initializes the main form.
 		/// </summary>
@@ -35,26 +41,28 @@ namespace WorkoutTrackerApp
 		/// <param name="e">Event data associated with this call.</param>
 		private void FormWorkoutTrackerMain_Shown(object sender, System.EventArgs e)
 		{
-			PopulateDataGridViewWithWorkoutData(1, 4);
+			PopulateDataGridViewWithWorkoutData((int)DefaultIdValues.defaultMin, (int)DefaultIdValues.defaultMax);
 		}
 
 		/// <summary>
-		/// Queries the database for the results necessary to populate the main
-		/// form's data grid view with Workout data.
+		/// Populates the main form's data grid view with Workout data.
 		/// </summary>
 		private void PopulateDataGridViewWithWorkoutData(int id)
 		{
-			WorkoutRepository workoutRepository = new WorkoutRepository();
-			Workout results = workoutRepository.Get(id);
+			Workout results = new WorkoutRepository().Get(id);
 			DataTable workoutDataTable = new DataTable();
 			workoutDataTable.Rows.Add(results.ToRow(workoutDataTable));
 			DataGridViewWorkouts.DataSource = workoutDataTable;
 		}
 
+		/// <summary>
+		/// Populates the main form's data grid view with a range of Workout data.
+		/// </summary>
+		/// <param name="start"></param>
+		/// <param name="end"></param>
 		private void PopulateDataGridViewWithWorkoutData(int start, int end)
 		{
-			WorkoutRepository workoutRepository = new WorkoutRepository();
-			List<Workout> results = workoutRepository.Get(start, end);
+			List<Workout> results = new WorkoutRepository().Get(start, end);
 			DataTable workoutDataTable = new DataTable();
 
 			foreach (Workout workout in results)
