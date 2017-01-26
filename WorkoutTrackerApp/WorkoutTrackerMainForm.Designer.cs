@@ -72,9 +72,13 @@
 			// 
 			// DataGridViewWorkouts
 			// 
+			this.DataGridViewWorkouts.AllowUserToAddRows = false;
+			this.DataGridViewWorkouts.AllowUserToDeleteRows = false;
+			this.DataGridViewWorkouts.AllowUserToResizeRows = false;
 			this.DataGridViewWorkouts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.DataGridViewWorkouts.Location = new System.Drawing.Point(13, 100);
 			this.DataGridViewWorkouts.Name = "DataGridViewWorkouts";
+			this.DataGridViewWorkouts.ReadOnly = true;
 			this.DataGridViewWorkouts.Size = new System.Drawing.Size(900, 150);
 			this.DataGridViewWorkouts.TabIndex = 1;
 			// 
