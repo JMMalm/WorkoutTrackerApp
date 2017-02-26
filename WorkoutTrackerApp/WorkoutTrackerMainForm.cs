@@ -72,11 +72,5 @@ namespace WorkoutTrackerApp
 
 			DataGridViewWorkouts.DataSource = workoutDataTable;
 		}
-
-		private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SettingsConfigurationForm settingsConfig = new SettingsConfigurationForm();
-			settingsConfig.Show();
-		}
 	}
 }

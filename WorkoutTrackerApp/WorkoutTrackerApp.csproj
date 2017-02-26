@@ -47,12 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SettingsConfigurationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsConfigurationForm.Designer.cs">
-      <DependentUpon>SettingsConfigurationForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="WorkoutTrackerMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,9 +55,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="SettingsConfigurationForm.resx">
-      <DependentUpon>SettingsConfigurationForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WorkoutTrackerMainForm.resx">
       <DependentUpon>WorkoutTrackerMainForm.cs</DependentUpon>
     </EmbeddedResource>
