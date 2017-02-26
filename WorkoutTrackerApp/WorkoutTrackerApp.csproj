@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WorkoutSetsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkoutSetsForm.Designer.cs">
+      <DependentUpon>WorkoutSetsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkoutTrackerMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="WorkoutSetsForm.resx">
+      <DependentUpon>WorkoutSetsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WorkoutTrackerMainForm.resx">
       <DependentUpon>WorkoutTrackerMainForm.cs</DependentUpon>
     </EmbeddedResource>

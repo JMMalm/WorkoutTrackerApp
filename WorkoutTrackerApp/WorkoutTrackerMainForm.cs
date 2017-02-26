@@ -52,7 +52,7 @@ namespace WorkoutTrackerApp
 			Workout results = new WorkoutRepository().Get(id);
 			DataTable workoutDataTable = new DataTable();
 			workoutDataTable.Rows.Add(results.ToRow(workoutDataTable));
-			DataGridViewWorkouts.DataSource = workoutDataTable;
+			dgv_Workouts.DataSource = workoutDataTable;
 		}
 
 		/// <summary>
@@ -70,7 +70,13 @@ namespace WorkoutTrackerApp
 				workoutDataTable.Rows.Add(workout.ToRow(workoutDataTable));
 			}
 
-			DataGridViewWorkouts.DataSource = workoutDataTable;
+			dgv_Workouts.DataSource = workoutDataTable;
+		}
+
+		private void btn_NewWorkout_Click(object sender, EventArgs e)
+		{
+			WorkoutSetsForm workoutSetsForm = new WorkoutSetsForm();
+			workoutSetsForm.Show();
 		}
 	}
 }
