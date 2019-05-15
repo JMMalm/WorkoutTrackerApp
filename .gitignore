@@ -1,19 +1,7 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
-/WorkoutTrackerApp/bin/Debug
-/WorkoutTrackerApp/obj/Debug
-/WorkoutTrackerApp/.vs/WorkoutTrackerApp/v14
-/WorkoutTrackerAppTests/bin/Debug
-/WorkoutTrackerDatabase/obj/Debug
-/WorkoutTrackerDatabase/bin/Debug
-/WorkoutTrackerAppTests/obj/Debug
-/WorkoutTrackerDatabase/WorkoutTrackerDatabase.sqlproj.user
-/WorkoutTrackerDatabase/WorkoutTrackerDatabase.refactorlog
-/WorkoutTrackerDatabase/WorkoutTrackerDatabase.publish.xml
-/WorkoutTrackerApp/connectionStrings.config
-/WorkoutTrackerDatabase/WorkoutTrackerDatabase.dbmdl
-/WorkoutTrackerApp.Logic/bin/Debug
-/WorkoutTrackerApp.Logic/obj/Debug
-/WorkoutTrackerApp.Logic/WorkoutTrackerApp.Logic.csproj.user
+*.vs/
+**bin/
+**obj/
+/WorkoutTracker/connectionStrings.config
